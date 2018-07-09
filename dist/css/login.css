@@ -1,0 +1,19 @@
+.login article{
+    color:#bdc3c7;
+    background: #34495e;
+    height: 400px;
+    width: 250px;
+    margin:0 auto;
+    padding: 5% 5%;
+    
+}
+.login article h2{
+    padding-bottom:10%;
+    text-align: center;
+}
+.login article label{
+    text-align: left;
+}
+login article input{
+    text-align:center;
+}
