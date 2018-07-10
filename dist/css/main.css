@@ -12,9 +12,9 @@ header {
 }
 
 header nav {
-	width:90%;
-	max-width:1000px;
-	margin:20px auto;
+	width:100%;
+	max-width:1300px;
+	margin:0px auto;
 	background:#024959;
 }
 

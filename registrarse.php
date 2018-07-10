@@ -28,6 +28,27 @@
 <section class="registro">
     <article>
         <h2>Registrarse</h2>
+        <table width="100">
+            <thead>
+              <tr>
+                  <th>Registrarse</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><input type="text" id="usuario" placeholder="Nombre de usuario .."></td>                                                      
+              </tr>
+              <tr>
+                  <td><input type="email" id="correo" placeholder="Correo email"></td>
+              </tr>
+               <tr>
+                  <td><input type="password" id="pass" placeholder="Contraseña"></td>
+               </tr>
+               <tr>
+                  <td><button id="guardar" >guardar</button></td>
+               </tr>
+            </tbody>
+        </table>
         
     </article>
 </section>
@@ -35,30 +56,41 @@
     <p></p>
 </footer>
 <script src="dist/js/jquery.min.js"></script>
+<script src="dist/js/menu.js" ></script>
 <script>
-    $(document).ready(main);
- 
- var contador = 1;
-  
- function main(){
-     $('.menu_bar').click(function(){
-         // $('nav').toggle(); 
-  
-         if(contador == 1){
-             $('nav').animate({
-                 left: '0'
-             });
-             contador = 0;
-         } else {
-             contador = 1;
-             $('nav').animate({
-                 left: '-100%'
-             });
-         }
-  
-     });
-  
- };
+  $("#guardar").click(function(){
+      var usuario = $("#usuario").val();
+      var correo = $("#correo").val();
+      var password = $("#pass").val();
+      var todo = {
+          'user'  : usuario,
+          'email' : correo,
+          'pass'  : password
+      };
+      $.ajax({
+          url : "logica/registrar.php",
+          type : "POST",
+          data : todo,
+          datatype : "json",
+          success: function(data){
+              
+              switch(data.msj)
+              {
+                  case 1:
+                   $("#usuario").val('');
+                   $("#correo").val('');
+                   $("#pass").val('');
+                   alert('Datos registrados con exito. :)');
+                  break;
+                  case 2:
+                   alert('Error en la conexión ó falta de datos, por favor rellene todos los campos ');
+                  break;
+
+              }
+          }
+      });
+      return false;
+  });
 </script>
 </body>
 </html>
