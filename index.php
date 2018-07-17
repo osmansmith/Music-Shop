@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,8 +34,13 @@
           <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </div>
-        <a class="py-2 d-none d-md-inline-block" href="registrarse.php">Registrarse</a>
-        <a class="py-2 d-none d-md-inline-block" href="login.php">login</a>       
+      <?php if(count($_SESSION) > 0){ ?>
+        <a class="py-2 d-none d-md-inline-block" href="logica/cerrarSesion.php"><?php echo $_SESSION['user'].' (salir)';?></a>
+           
+<?php }else{?>
+    <a class="py-2 d-none d-md-inline-block" href="registrarse.php">Registrarse</a>
+        <a class="py-2 d-none d-md-inline-block" href="login.php">login</a>    
+<?php }; ?>
       </div>
     </nav>
 
