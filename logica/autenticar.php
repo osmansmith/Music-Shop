@@ -15,16 +15,18 @@
     $_SESSION['user'] = $auth['usuario_usu'];    
     $_SESSION['email'] = $auth['correo_usu'];
 
-    $jsondata['msj'] = 1;
+    $jsondata['codigo'] = 1;
     
 
  }else{
 
-    $jsondata['msj'] = 2;       
+    $jsondata['codigo'] = 2;       
+    $jsondata['mensaje'] = "Usuario no registrado";       
     
  }
  }else{
-    $jsondata['msj'] = 2; 
+    $jsondata['codigo'] = 2; 
+    $jsondata['mensaje'] = "Error en la conexión";       
  }
 
 
