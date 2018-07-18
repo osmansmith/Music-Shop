@@ -60,7 +60,9 @@
                     <tbody>
                     <tr>
                         
-                        <td><select name="clave" id="clave" class="form-control">
+                        <td>
+                        <div class="d-flex bd-highlight">
+                        <div class="p-2 w-100 bd-highlight"><select name="clave" id="clave" class="form-control">
                         <option value="">Seleccione id de producto</option>
                         <?php                                     
                             $con->sql = $con->my->query('SELECT id_pro FROM producto');
@@ -71,11 +73,16 @@
                             }
                             
                             ?>
-                        </select><a class="btn btn-success buscar">buscar</a></td>                                                      
+                        </select></div>
+                        <div class="p-2 flex-shrink-1 bd-highlight"><a class="btn btn-success buscar">buscar</a></div>
+                        </div>
+                        
+                        
+                        </td>                                                      
                     </tr>
                     <tr>
                         <input type="hidden" id="opc" name="opc" value="actualizar" >
-                        <td><input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre producto .."></td>                                                      
+                        <td><input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre producto .." required></td>                                                      
                     </tr>
                     <tr>
                         <td><input type="text" class="form-control" id="fecha" name="fecha" placeholder="Año lanzamiento" required></td>
@@ -84,15 +91,15 @@
                         <td><input type="text" class="form-control" id="artista" name="artista" placeholder="Artista o agrupación" required></td>
                     </tr>                    
                     <tr>
-                        <td><input type="file" class="form-control" id="imagen" name="imagen" placeholder="caratula" required /></td>
+                        <td><input type="file" class="form-control" id="imagen" name="imagen" placeholder="caratula" /></td>
                     </tr>
                     <tr>
                         <td><input type="text" class="form-control" id="precio" name="precio" placeholder="Precio" required></td>
                         
                     </tr>
                     <tr>
-                        <td><select name="genero" id="genero" name="genero" name="genero" class="form-control">
-                            <option value="">Escoja un genero</option>
+                        <td><select name="genero" id="genero" name="genero" name="genero" class="form-control" required>
+                            
                         <?php                                     
                             $con->sql = $con->my->query('SELECT * FROM genero');
 
@@ -164,16 +171,16 @@ $(document).ready(function(){
     // });
     
     
-    // $("#imagen").change(function() {
-    //     var file = this.files[0];
-    //     var imagefile = file.type;
-    //     var match= ["image/jpeg","image/png","image/jpg"];
-    //     if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
-    //         alert('Porfavor escoja una imagen valida (JPEG/JPG/PNG).');
-    //         $("#imagen").val('');
-    //         return false;
-    //     }
-    // });
+    $("#imagen").change(function() {
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+            alert('Porfavor escoja una imagen valida (JPEG/JPG/PNG).');
+            $("#imagen").val('');
+            return false;
+        }
+    });
     $(".buscar").click(function(e){
         var clave = $("#clave").val();
     $.ajax({
@@ -183,7 +190,14 @@ $(document).ready(function(){
         datatype : "json",
         success:function(data)
         {
-        console.log(data.datos);
+            console.log(data);
+        $("#nombre").val(data.nombre);
+        $("#fecha").val(data.fecha);
+        $("#artista").val(data.artista);
+        // $("#imagen").val(data.imagen);
+        $("#precio").val(data.precio);
+        $("#genero").val(data.genero);
+        $("#stock").val(data.stock);
         }
     });
     e.preventDefault();

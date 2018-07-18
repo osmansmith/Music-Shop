@@ -8,7 +8,7 @@
  $PASS = $_POST['pass'];
 
 
- $con->sql = $con->my->query('SELECT * FROM usuario WHERE usuario_usu = "'.$USUARIO.'" and pass_usu = "'.$PASS.'"');
+ $con->sql = $con->my->query('SELECT * FROM usuario WHERE usuario_usu = "'.$USUARIO.'" and clave_usu = "'.$PASS.'"');
 
  if($auth = $con->sql->fetch_array(MYSQLI_ASSOC))
  {

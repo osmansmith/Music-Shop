@@ -60,7 +60,7 @@
                     <tbody>
                     <tr>
                         <input type="hidden" id="opc" name="opc" value="insertar" >
-                        <td><input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre producto .."></td>                                                      
+                        <td><input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre producto .." required></td>                                                      
                     </tr>
                     <tr>
                         <td><input type="text" class="form-control" id="fecha" name="fecha" placeholder="Año lanzamiento" required></td>

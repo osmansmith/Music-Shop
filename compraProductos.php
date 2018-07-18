@@ -1,3 +1,8 @@
+<?php 
+      require_once 'datos/BD.php';
+      session_start();
+      $con = new BD();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,6 +15,14 @@
     <title>Tux Music</title>
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="dist/css/producto.css" rel="stylesheet">
+    <style>
+    .shadow-lg {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.8)!important;
+}
+      .card{
+        transition: all 0.5s
+      }
+    </style>
   </head>
 
   <body>
@@ -39,54 +52,52 @@
       </div>
     </nav>
 
-    <!-- <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Tux Music</h1>
-        <p class="lead font-weight-normal">Revisa nuestras ofertas, y adquiere tu musica favorita.</p>
-        <a class="btn btn-outline-secondary" href="#">Productos</a>
+    <hr>
+    <h2 class="display-4 text-center">Productos</h2>
+    <hr>
+    <div class="row d-flex justify-content-center mb-4">
+      <div class="col-4">
+        <div class="d-flex bd-highlight">
+        <div class="p-2 w-100 bd-highlight">
+          <input type="text" class="form-control" id="filtro" class="filtro" placeholder="Buscar ...">
+        </div>
+        <div class="p-2 flex-shrink-1 bd-highlight">
+        <button class="btn btn-info btn-md">Buscar</button>
+        </div>
       </div>
-      <div class="product-device box-shadow d-none d-md-block"></div>
-      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-    </div> -->
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-      <div class="row justify-content-center text-center">
-                <div class="col-3">
-                <h2 class="h2">Ingresar productos</h2>
-                <table class="table table-borderless">
-                    <thead>
-                    <tr>
-                        
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre de usuario .." required></td>                                                      
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre(s) .." required></td>                                                      
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido(s) .." required></td>                                                      
-                    </tr>
-                    <tr>
-                        <td><input type="email" class="form-control" id="correo" name="correo" placeholder="Correo email" required></td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required></td>
-                    </tr>
-                    <tr>
-                        <td><button id="guardar" class="btn btn-success guardar" >guardar</button></td>
-                    </tr>
-                    </tbody>
-                </table> 
-                </div>
-            </div>
       </div>
-     
-    </div>    
+    </div>
+    
+    
+    
+        <div class="container">
+           <div class="d-flex align-content-between flex-wrap text-center ">
 
+           <?php                                     
+                $con->sql = $con->my->query('SELECT * FROM producto');
+
+                while($auth = $con->sql->fetch_array(MYSQLI_ASSOC))
+                {
+                  ?>
+                    <div class="col my-2">
+                    <div class="card " style="width: 17rem;">
+                      <img class="card-img-top" src="dist/img/<?php echo $auth['imagen_pro']?>" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"><?php echo $auth['nombre_pro']?></h5>
+                        <p class="card-text"> codigo : <?php echo $auth['id_pro']?><br>
+                                              Precio : <?php echo $auth['precio_pro']?><br>
+                                              Autor : <?php echo $auth['artista_pro']?><br>
+                                              Stock : <?php echo $auth['stock_pro']?> </p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                      </div>
+                    </div>                
+                    </div>
+                  <?php
+                }                            
+             ?>               
+        </div>      
+      </div>    
+ 
     <footer class="container py-5">
       <div class="row">
         <div class="col-12 text-center">
@@ -100,5 +111,14 @@
     <script src="dist/js/jquery.min.js"></script>
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
+    <script>
+    $(".card").hover(function(){
+      $(this).addClass('shadow-lg');
+    }, function(){
+      $(this).removeClass('shadow-lg');
+    });
+    $("body").css("background","");
+    
+    </script>
   </body>
 </html>
