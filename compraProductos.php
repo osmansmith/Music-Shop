@@ -19,7 +19,7 @@
         <a class="py-2" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
         </a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="index.php">Inicio</a>
        
         <a class="py-2 d-none d-md-inline-block" href="misionVision.php">Misión y Visión</a>
         <div class="nav-item dropdown">
@@ -27,8 +27,8 @@
           Productos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="ingresaProductos.php"> Ingresar Productos</a>
-          <a class="dropdown-item" href="productos.php">Comprar Productos</a>
+        <a class="dropdown-item" href="ingresaProductos.php"> Ingresar Productos</a>
+          <a class="dropdown-item" href="#">Comprar Productos</a>
           <a class="dropdown-item" href="actualizaProductos.php">Actualizar Productos</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
@@ -50,11 +50,10 @@
     </div> -->
 
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-        <section class="registro">
-            <article>
-            <div class="row justify-content-center text-center">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="row justify-content-center text-center">
                 <div class="col-3">
-                <h2 class="h2">Registrarse</h2>
+                <h2 class="h2">Ingresar productos</h2>
                 <table class="table table-borderless">
                     <thead>
                     <tr>
@@ -63,25 +62,29 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" id="usuario" placeholder="Nombre de usuario .."></td>                                                      
+                        <td><input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre de usuario .." required></td>                                                      
                     </tr>
                     <tr>
-                        <td><input type="email" class="form-control" id="correo" placeholder="Correo email"></td>
+                        <td><input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre(s) .." required></td>                                                      
                     </tr>
                     <tr>
-                        <td><input type="password" class="form-control" id="pass" placeholder="Contraseña"></td>
+                        <td><input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido(s) .." required></td>                                                      
                     </tr>
                     <tr>
-                        <td><button id="guardar" class="btn btn-success" >guardar</button></td>
+                        <td><input type="email" class="form-control" id="correo" name="correo" placeholder="Correo email" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required></td>
+                    </tr>
+                    <tr>
+                        <td><button id="guardar" class="btn btn-success guardar" >guardar</button></td>
                     </tr>
                     </tbody>
                 </table> 
                 </div>
             </div>
-                
-                
-            </article>
-        </section>
+      </div>
+     
     </div>    
 
     <footer class="container py-5">
@@ -97,40 +100,5 @@
     <script src="dist/js/jquery.min.js"></script>
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
-    <script>
-  $("#guardar").click(function(){
-      var usuario = $("#usuario").val();
-      var correo = $("#correo").val();
-      var password = $("#pass").val();
-      var todo = {
-          'user'  : usuario,
-          'email' : correo,
-          'pass'  : password
-      };
-      $.ajax({
-          url : "logica/registrar.php",
-          type : "POST",
-          data : todo,
-          datatype : "json",
-          success: function(data){
-              
-              switch(data.msj)
-              {
-                  case 1:
-                   $("#usuario").val('');
-                   $("#correo").val('');
-                   $("#pass").val('');
-                   alert('Datos registrados con exito. :)');
-                  break;
-                  case 2:
-                   alert('Error en la conexión ó falta de datos, por favor rellene todos los campos ');
-                  break;
-
-              }
-          }
-      });
-      return false;
-  });
-</script>
   </body>
 </html>

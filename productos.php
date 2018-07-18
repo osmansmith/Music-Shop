@@ -27,8 +27,9 @@
           Productos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"> Ingresar Productos</a>
+          <a class="dropdown-item" href="ingresaProductos.php"> Ingresar Productos</a>
           <a class="dropdown-item" href="productos.php">Comprar Productos</a>
+          <a class="dropdown-item" href="actualizaProductos.php">Actualizar Productos</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
