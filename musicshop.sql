@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2018 a las 07:35:35
+-- Tiempo de generación: 19-07-2018 a las 00:28:39
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -83,7 +83,12 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_pro`, `nombre_pro`, `fecha_pro`, `artista_pro`, `imagen_pro`, `precio_pro`, `id_genero_pro`, `stock_pro`) VALUES
-(1, '', '123', '123', '', 123, 1, 123);
+(2, 'Cumbia Chilombiana', '2010', 'Chico Trujillo', '1531924669_cumbia-chilombiana.jpg', 15000, 2, 45),
+(3, 'Alive', '1999', 'Pearl Jam', '1531931444_pearl-jam-alive1.jpg', 45000, 1, 200),
+(4, 'The Doors', '1986', 'The Doors', '1531932370_theDoors.jpg', 18500, 1, 42),
+(5, 'Apetite for destruction', '1991', 'Gun\'s n roses', '1531932585_guns.jpg', 5000, 1, 30),
+(6, 'zeitgeist', '2002', 'smashing pumpkins', '1531947030_smashing_pumpkins.jpg', 32700, 1, 30),
+(7, 'Permanent vacation', '1996', 'Aerosmith', '1531947199_aerosmith.jpg', 55000, 1, 145);
 
 -- --------------------------------------------------------
 
@@ -98,6 +103,13 @@ CREATE TABLE `usuario` (
   `nombre_usu` varchar(150) NOT NULL,
   `apellido usu` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`correo_usu`, `clave_usu`, `usuario_usu`, `nombre_usu`, `apellido usu`) VALUES
+('pablo@music.cl', 'pablo123', 'pablo', 'pablo', 'peralta');
 
 -- --------------------------------------------------------
 
@@ -165,7 +177,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
