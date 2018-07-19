@@ -28,7 +28,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="ingresaProductos.php"> Ingresar Productos</a>
-          <a class="dropdown-item" href="compraProductos.php">Comprar Productos</a>
+          <a class="dropdown-item" href="compraProductos.php">Productos</a>
           <a class="dropdown-item" href="actualizaProductos.php">Actualizar Productos</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
@@ -39,30 +39,24 @@
       </div>
     </nav>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Tux Music</h1>
-        <p class="lead font-weight-normal">Revisa nuestras ofertas, y adquiere tu musica favorita.</p>
-        <a class="btn btn-outline-secondary" href="#">Productos</a>
-      </div>
-      <div class="product-device box-shadow d-none d-md-block"></div>
-      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-    </div>
+    <hr>
+    <h2 class="display-4 text-center">Acerca de nosotros</h2>
+    <hr>
 
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
       <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
-          <h2 class="display-5">Another headline</h2>
-          <p class="lead">And an even wittier subheading.</p>
+          <h2 class="display-5">Misión</h2>
+          <p class="lead">Ser una empresa referente de alta calidad y competencia, con apego a un marco valorativo, definido y constante en cuanto a calidad, atención, servicio en la venta y distribución de productos que satisfagan a nuestros clientes. De igual manera proporcionaremos a nuestros trabajadores las áreas y las herramientas adecuadas para la venta de musica. Brindaremos un mejor servicio y atención para que tanto niños, jóvenes y adultos tengan acceso a productos que estén a la vanguardia.</p>
         </div>
-        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <!-- <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
       </div>
       <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
         <div class="my-3 p-3">
-          <h2 class="display-5">Another headline</h2>
-          <p class="lead">And an even wittier subheading.</p>
+          <h2 class="display-5">Visión</h2>
+          <p class="lead">Ser la empresa como líder en el mercado de venta de musica, Así como también lograr una mejor atención y servicio.</p>
         </div>
-        <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <!-- <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
       </div>
     </div>    
 

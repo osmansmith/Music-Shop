@@ -142,33 +142,33 @@
     <script src="dist/js/bootstrap.min.js"></script>
     <script>
 $(document).ready(function(){
-    // $("#ingrePro").on('submit', function(e){
+    $("#ingrePro").on('submit', function(e){
        
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: 'logica/crudPro.php',
-    //         data: new FormData(this),
-    //         contentType: false,
-    //         cache: false,
-    //         processData:false,
-    //         beforeSend: function(){
-    //             $('.guardar').attr("disabled","disabled");
-    //             $('#ingrePro').css("opacity",".5");
-    //         },
-    //         success: function(msg){
-    //             $('.statusMsg').html('');
-    //             if(msg == 'ok'){
-    //                 $('#ingrePro')[0].reset();
-    //                 $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Los datos han sido guardados, exitosamente.</span>');
-    //             }else{
-    //                 $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">A ocurrido un problema, intentelo nuevamente.</span>');
-    //             }
-    //             $('#ingrePro').css("opacity","");
-    //             $(".guardar").removeAttr("disabled");
-    //         }
-    //     });
-    //     e.preventDefault();
-    // });
+        $.ajax({
+            type: 'POST',
+            url: 'logica/crudPro.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.guardar').attr("disabled","disabled");
+                $('#ingrePro').css("opacity",".5");
+            },
+            success: function(msg){
+                $('.statusMsg').html('');
+                if(msg == 'ok'){
+                    $('#ingrePro')[0].reset();
+                    $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Los datos han sido actualizados exitosamente.</span>');
+                }else{
+                    $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">A ocurrido un problema, intentelo nuevamente.</span>');
+                }
+                $('#ingrePro').css("opacity","");
+                $(".guardar").removeAttr("disabled");
+            }
+        });
+        e.preventDefault();
+    });
     
     // funcion para validar solo imagenes en el campo file
     $("#imagen").change(function() {

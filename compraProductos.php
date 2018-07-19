@@ -74,21 +74,26 @@
            <div class="d-flex align-content-between flex-wrap text-center ">
 
            <?php                                     
-                $con->sql = $con->my->query('SELECT * FROM producto');
+                $con->sql = $con->my->query('SELECT * FROM producto WHERE stock_pro > 0');
 
                 while($auth = $con->sql->fetch_array(MYSQLI_ASSOC))
                 {
                   ?>
-                    <div class="col my-2 card-deck">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 my-2 card-deck">
                     <div class="card " style="width: 17rem;">
                       <img class="card-img-top" src="dist/img/<?php echo $auth['imagen_pro']?>" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title"><?php echo $auth['nombre_pro']?></h5>
                         <p class="card-text"> codigo : <?php echo $auth['id_pro']?><br>
-                                              Precio : <?php echo $auth['precio_pro']?><br>
+                                              Precio : <?php echo '$'.$auth['precio_pro']?><br>
                                               Autor : <?php echo $auth['artista_pro']?><br>
-                                              Stock : <?php echo $auth['stock_pro']?> </p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                                              Stock : <?php echo $auth['stock_pro']?> 
+                        </p>
+                        <form action="venta.php" method="post">
+                        <input type="hidden" name="clave" id="clave" value="<?php echo $auth['id_pro']?>">
+                        <button type="submit" class="btn btn-primary">Comprar</button>
+                        </form>
+                        
                       </div>
                     </div>                
                     </div>
@@ -119,6 +124,18 @@
     });
     $("body").css("background","");
     
+    // $(".comprar").click(function(e){
+    //   var clave = $(this).attr("id");
+    //   $.ajax({
+    //     url : 'venta.php',
+    //     data : 'clave='+clave,
+    //     type: 'POST',
+    //     success:function(){
+    //       location.href="venta.php";
+    //     }
+    //   });
+    //   e.preventDefault();
+    // });
     </script>
   </body>
 </html>

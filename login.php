@@ -19,6 +19,7 @@
         background-repeat: no-repeat;
         background-position: center left;
         }
+        
     </style>
   </head>
 

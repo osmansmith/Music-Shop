@@ -2,9 +2,9 @@
     max-width: 960px;
   }
   
-  /*
-   * Custom translucent site header
-   */
+  footer{
+    margin-top:100px;
+  }
   
   .site-header {
     background-color: rgba(0, 0, 0, .85);
@@ -20,9 +20,7 @@
     text-decoration: none;
   }
   
-  /*
-   * Dummy devices (replace them with your own or something else entirely!)
-   */
+
   
   .product-device {
     position: absolute;
@@ -56,9 +54,6 @@
   }
   
   
-  /*
-   * Extra utilities
-   */
   
   .border-top { border-top: 1px solid #e5e5e5; }
   .border-bottom { border-bottom: 1px solid #e5e5e5; }
