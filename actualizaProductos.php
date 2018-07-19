@@ -170,7 +170,7 @@ $(document).ready(function(){
     //     e.preventDefault();
     // });
     
-    
+    // funcion para validar solo imagenes en el campo file
     $("#imagen").change(function() {
         var file = this.files[0];
         var imagefile = file.type;
@@ -191,13 +191,12 @@ $(document).ready(function(){
         success:function(data)
         {
             console.log(data);
-        $("#nombre").val(data.nombre);
-        $("#fecha").val(data.fecha);
-        $("#artista").val(data.artista);
-        // $("#imagen").val(data.imagen);
-        $("#precio").val(data.precio);
-        $("#genero").val(data.genero);
-        $("#stock").val(data.stock);
+            $("#nombre").val(data.nombre);
+            $("#fecha").val(data.fecha);
+            $("#artista").val(data.artista);        
+            $("#precio").val(data.precio);
+            $("#genero").val(data.genero);
+            $("#stock").val(data.stock);
         }
     });
     e.preventDefault();

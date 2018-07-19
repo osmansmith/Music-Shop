@@ -141,7 +141,7 @@ $(document).ready(function(e){
                 $('.statusMsg').html('');
                 if(msg == 'ok'){
                     $('#ingrePro')[0].reset();
-                    $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Los datos han sido guardados, exitosamente.</span>');
+                    $('.statusMsg').html('<div class="alert alert-success" role="alert">Los datos han sido guardados exitosamente, yabayabadu!!</div>');
                 }else{
                     $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">A ocurrido un problema, intentelo nuevamente.</span>');
                 }

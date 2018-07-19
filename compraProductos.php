@@ -79,7 +79,7 @@
                 while($auth = $con->sql->fetch_array(MYSQLI_ASSOC))
                 {
                   ?>
-                    <div class="col my-2">
+                    <div class="col my-2 card-deck">
                     <div class="card " style="width: 17rem;">
                       <img class="card-img-top" src="dist/img/<?php echo $auth['imagen_pro']?>" alt="Card image cap">
                       <div class="card-body">
