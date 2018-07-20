@@ -22,6 +22,35 @@
       .card{
         transition: all 0.5s
       }
+      #buscar
+      {
+      width:250px;
+      border:solid 1px #000;
+      padding:3px;
+      }
+      #caja
+      {
+      min-width:150px;
+      display:none;
+      float:right; margin-right:30px;
+      border-left:solid 1px #dedede;
+      border-right:solid 1px #dedede;
+      border-bottom:solid 1px #dedede;
+      overflow:hidden;
+      }
+      .display_box
+      {
+      padding:4px; 
+      border-top:solid 1px #dedede; 
+      font-size:12px; 
+      height:30px;
+      cursor:pointer;
+      }
+      .display_box:hover
+      {
+      background:#3b5998;
+      color:#FFFFFF;
+      }
     </style>
   </head>
 
@@ -51,18 +80,21 @@
         <a class="py-2 d-none d-md-inline-block" href="login.php">login</a>       
       </div>
     </nav>
-
-    <hr>
-    <h2 class="display-4 text-center">Productos</h2>
-    <hr>
+    <div class="container">
+      <hr>
+      <h2 class="display-4 text-center">Productos</h2>
+      <hr>
+    </div>
+    
     <div class="row d-flex justify-content-center mb-4">
       <div class="col-4">
         <div class="d-flex bd-highlight">
         <div class="p-2 w-100 bd-highlight">
-          <input type="text" class="form-control" id="filtro" class="filtro" placeholder="Buscar ...">
+        <input type="text" class="form-control search" id="searchbox" placeholder="Buscar ..." />
+        <div id="display">          
         </div>
         <div class="p-2 flex-shrink-1 bd-highlight">
-        <button class="btn btn-info btn-md">Buscar</button>
+        <button class="btn btn-info btn-md buscar">Buscar</button>
         </div>
       </div>
       </div>
@@ -70,37 +102,8 @@
     
     
     
-        <div class="container">
-           <div class="d-flex align-content-between flex-wrap text-center ">
-
-           <?php                                     
-                $con->sql = $con->my->query('SELECT * FROM producto WHERE stock_pro > 0');
-
-                while($auth = $con->sql->fetch_array(MYSQLI_ASSOC))
-                {
-                  ?>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 my-2 card-deck">
-                    <div class="card " style="width: 17rem;">
-                      <img class="card-img-top" src="dist/img/<?php echo $auth['imagen_pro']?>" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title"><?php echo $auth['nombre_pro']?></h5>
-                        <p class="card-text"> codigo : <?php echo $auth['id_pro']?><br>
-                                              Precio : <?php echo '$'.$auth['precio_pro']?><br>
-                                              Autor : <?php echo $auth['artista_pro']?><br>
-                                              Stock : <?php echo $auth['stock_pro']?> 
-                        </p>
-                        <form action="venta.php" method="post">
-                        <input type="hidden" name="clave" id="clave" value="<?php echo $auth['id_pro']?>">
-                        <button type="submit" class="btn btn-primary">Comprar</button>
-                        </form>
-                        
-                      </div>
-                    </div>                
-                    </div>
-                  <?php
-                }                            
-             ?>               
-        </div>      
+        <div class="container pro">
+                
       </div>    
  
     <footer class="container py-5">
@@ -117,25 +120,64 @@
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
     <script>
+    $(document).ready(function(){
+$(".search").keyup(function() 
+{
+var searchbox = $(this).val();
+var dataString = 'filtro='+ searchbox;
+if(searchbox=='')
+{}
+else
+{
+$.ajax({
+type: "POST",
+url: "logica/busqueda.php",
+data: dataString,
+cache: false,
+success: function(html)
+{
+$("#display").html(html).show();
+}
+});
+}return false; 
+});
+
+
+
+
+});
     $(".card").hover(function(){
       $(this).addClass('shadow-lg');
     }, function(){
       $(this).removeClass('shadow-lg');
     });
-    $("body").css("background","");
+
     
-    // $(".comprar").click(function(e){
-    //   var clave = $(this).attr("id");
-    //   $.ajax({
-    //     url : 'venta.php',
-    //     data : 'clave='+clave,
-    //     type: 'POST',
-    //     success:function(){
-    //       location.href="venta.php";
-    //     }
-    //   });
-    //   e.preventDefault();
-    // });
+  function fun(dato)
+  {
+    $(".search").val(dato)
+  }
+     
+  $.ajax({
+    url : 'logica/listarCompra.php',    
+    success:function(productos){
+      $('.pro').html(productos);
+    }
+  });
+  
+  $('.buscar').click(function(e){
+    var fil = $(".search").val();
+    $.ajax({
+    url : 'logica/listarCompra.php',
+    type : 'POST',
+    data : 'filtro='+fil,
+    success:function(productos){
+      $('.pro').html(productos);
+    }
+  });
+  e.preventDefault();
+  });
+
     </script>
   </body>
 </html>

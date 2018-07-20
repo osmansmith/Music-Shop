@@ -38,7 +38,7 @@
         <a class="py-2 d-none d-md-inline-block" href="login.php">login</a>       
       </div>
     </nav>
-
+    <div class="container">
     <hr>
     <h2 class="display-4 text-center">Acerca de nosotros</h2>
     <hr>
@@ -58,7 +58,9 @@
         </div>
         <!-- <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
       </div>
-    </div>    
+    </div>  
+    </div>
+      
 
     <footer class="container py-5">
       <div class="row">
